@@ -27,4 +27,9 @@ function insert(review, callback) {
   ReviewModel.create(review, callback);
 }
 
+function findAll(callback) {
+  ReviewModel.find({}, callback);
+}
+
 module.exports.insert = insert;
+module.exports.findAll = findAll;
