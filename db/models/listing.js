@@ -16,5 +16,4 @@ function findAll(callback) {
 }
 
 // module.exports = insert;
-module.exports = findAll;
-module.exports = ListingModel;
+module.exports = { findAll, ListingModel };

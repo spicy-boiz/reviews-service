@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const reviewController = require('../db/controllers/review.js');
+const listingController = require('../db/controllers/listing.js');
 
 const port = 3003;
 
@@ -12,7 +12,7 @@ mongoose.connect('mongodb://localhost/FEC', { useMongoClient: true });
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
-app.get('/api/reviews', reviewController.getReviews);
+app.get('/api/listings', listingController.getListings);
 
 app.listen(port, () => (
   console.log(`listening on port ${port}`)
