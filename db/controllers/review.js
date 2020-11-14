@@ -5,11 +5,11 @@ module.exports = {
   getReviews: (req, res) => {
     Reviews.findAll((err, docs) => {
       if (err) {
-        console.log(err)
+        console.log(err);
         res.end();
       } else {
         res.json(docs);
       }
-    })
-  }
-}
+    });
+  },
+};
