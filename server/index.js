@@ -3,11 +3,12 @@ const mongoose = require('mongoose');
 const path = require('path');
 const listingController = require('../db/controllers/listing.js');
 
+mongoose.set('useCreateIndex', true);
 const port = 3003;
 
 const app = express();
 
-mongoose.connect('mongodb://localhost/FEC', { useMongoClient: true });
+mongoose.connect('mongodb://localhost/FEC', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/../client/dist')));
