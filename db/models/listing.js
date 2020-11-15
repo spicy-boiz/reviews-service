@@ -7,13 +7,13 @@ const listingSchema = new mongoose.Schema({
 
 const ListingModel = mongoose.model('Listing', listingSchema);
 
-// function insert(listing, callback) {
-//   ListingModel.create(listing, callback);
-// }
-
 function findAll(callback) {
   ListingModel.find({}, callback);
 }
 
+function findOne(id, callback) {
+  ListingModel.find({ id }, callback);
+}
+
 // module.exports = insert;
-module.exports = { findAll, ListingModel };
+module.exports = { findAll, findOne, ListingModel };
