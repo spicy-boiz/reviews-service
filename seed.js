@@ -2,21 +2,30 @@
 /* eslint-disable no-console */
 const faker = require('faker');
 const mongoose = require('mongoose');
-const data = require('./reviewData.js');
-const Review = require('./db/models/review.js');
-const Listing = require('./db/models/listing.js');
+const data = require('./reviewData');
+const Review = require('./db/models/review');
+const Listing = require('./db/models/listing');
 
-mongoose.connect('mongodb://localhost/FEC', { useMongoClient: true });
+mongoose.connect('mongodb://localhost:27017/FEC',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .catch((err) => {
+    console.log(err);
+    process.exit(1);
+  });
+mongoose.set('useCreateIndex', true);
 
 const seedDb = (d) => {
   d.forEach((listing) => {
     const reviewIdCount = 0;
-    const currentListing = new Listing(listing);
+    const currentListing = new Listing.ListingModel(listing);
     const randomRating = () => (
       ((Math.random() * (5 - 2)) + 2).toString().slice(0, 1)
     );
 
-    const newReview = {
+    const newReview = () => ({
       review: {
         id: reviewIdCount,
         listing_id: currentListing.id,
@@ -36,14 +45,14 @@ const seedDb = (d) => {
         location: Number(randomRating()),
         value: Number(randomRating()),
       },
-    };
+    });
 
     const reviewArray = [];
     let num = 1;
     const randomAmount = Math.floor(Math.random() * (200 - 30)) + 30;
 
     while (num <= randomAmount) {
-      const currentReview = new Review(newReview);
+      const currentReview = new Review(newReview());
       currentReview.review.id = num;
       reviewArray.push(currentReview);
       currentReview.save((err) => {
@@ -62,7 +71,7 @@ const seedDb = (d) => {
       if (err) {
         console.log(err);
       } else {
-        // console.log('saved listing');
+        console.log('saved listing');
       }
     });
   });
