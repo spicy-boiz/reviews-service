@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import ReviewsList from './ReviewsList';
 import Ratings from './Ratings';
 
 const ReviewApp = () => {
-  const [listingData, setListingData] = useState([]);
+  const [reviewData, setReviewData] = useState([]);
+  const [doneLoading, setDoneLoading] = useState(false);
 
-  useEffect(() => {
+  if (!doneLoading) {
     axios.get('api/listings/3')
-      .then((res) => setListingData(res.data))
+      .then((res) => setReviewData(res.data[0].reviews))
       .catch((err) => console.log(err));
-  }, []);
+    setDoneLoading(true);
+  }
 
   return (
     <div className="ReviewApp">
-      <Ratings data={listingData} />
-      <ReviewsList data={listingData} />
+      <Ratings data={reviewData} />
+      <ReviewsList data={reviewData} />
     </div>
   );
 };
