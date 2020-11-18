@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import ReviewsList from './ReviewsList';
 import Ratings from './Ratings';
 
@@ -14,11 +15,18 @@ const ReviewApp = () => {
     setDoneLoading(true);
   }
 
+  const ReviewAppContainer = styled.div`
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 48px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  `;
+
   return (
-    <div className="ReviewApp">
+    <ReviewAppContainer>
       <Ratings data={reviewData} />
       <ReviewsList data={reviewData} />
-    </div>
+    </ReviewAppContainer>
   );
 };
 

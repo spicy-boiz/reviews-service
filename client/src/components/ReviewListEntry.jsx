@@ -2,12 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ReviewListEntry = (props) => {
+  // props definitions
   const {
     avatar,
     name,
     text,
     date,
   } = props;
+
+  // review date formatting
+  const reviewDate = new Date(date);
+  const options = { month: 'long' };
+  const dateYear = reviewDate.getFullYear();
+  const dateMonth = new Intl.DateTimeFormat('en-US', options)
+    .format(reviewDate);
 
   return (
     <div className="ReviewListEntry">
@@ -19,7 +27,7 @@ const ReviewListEntry = (props) => {
           {name}
         </div>
         <div className="date">
-          {date}
+          {`${dateMonth} ${dateYear}`}
         </div>
       </div>
       <div className="review-text">

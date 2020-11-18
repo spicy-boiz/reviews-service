@@ -28,6 +28,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.json', '.jsx', '.css'],
+    symlinks: false,
   },
   watch: true,
 };

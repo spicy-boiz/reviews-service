@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import React, { useState } from 'react';
 import ReviewListEntry from './ReviewListEntry';
 
@@ -10,8 +11,13 @@ const ReviewList = ({ data }) => {
     setReviews(data);
   }
 
+  const ReviewGrid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  `;
+
   return (
-    <div>
+    <ReviewGrid>
       {reviews.slice(0, 6).map((singleReview) => (
         <ReviewListEntry
           avatar={singleReview.user.avatar_url}
@@ -20,7 +26,7 @@ const ReviewList = ({ data }) => {
           date={singleReview.review.date}
         />
       ))}
-    </div>
+    </ReviewGrid>
   );
 };
 
