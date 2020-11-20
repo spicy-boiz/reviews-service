@@ -22,7 +22,7 @@ const seedDb = (d) => {
     const reviewIdCount = 0;
     const currentListing = new Listing.ListingModel(listing);
     const randomRating = () => (
-      ((Math.random() * (5 - 2)) + 2).toString().slice(0, 1)
+      ((Math.random() * 5) + 2).toString().slice(0, 1)
     );
 
     const newReview = () => ({
@@ -35,7 +35,7 @@ const seedDb = (d) => {
       user: {
         name: faker.name.findName(),
         email: faker.internet.email(),
-        avatar_url: faker.image.avatar(),
+        avatar_url: '',
       },
       ratings: {
         cleanliness: Number(randomRating()),
@@ -52,8 +52,13 @@ const seedDb = (d) => {
     const randomAmount = Math.floor(Math.random() * (200 - 30)) + 30;
 
     while (num <= randomAmount) {
+      const randPicNum = Math.floor(Math.random() * 100);
+      const gend = ['men', 'women'];
+      const randGend = gend[Math.floor(Math.random() * 2)];
+      const genNewPic = () => (`https://randomuser.me/api/portraits/${randGend}/${randPicNum}.jpg`);
       const currentReview = new Review(newReview());
       currentReview.review.id = num;
+      currentReview.user.avatar_url = genNewPic();
       reviewArray.push(currentReview);
       currentReview.save((err) => {
         if (err) {

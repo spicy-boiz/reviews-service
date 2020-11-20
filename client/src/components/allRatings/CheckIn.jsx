@@ -38,7 +38,7 @@ const CheckIn = (props) => {
     flex-direction: row;
     justify-content: flex-end;
     padding-top: 3px;
-    padding-right: 83px;
+    padding-right: 95px;
   `;
 
   const MetricName = styled.div`

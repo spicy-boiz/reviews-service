@@ -42,7 +42,7 @@ const Ratings = (props) => {
 
   const RatingsGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   margin-bottom: 2rem;
   `;
 
