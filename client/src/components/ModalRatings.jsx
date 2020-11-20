@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Cleanliness from './allRatings/Cleanliness';
 import Communication from './allRatings/Communication';
-import CheckIn from './allRatings/CheckIn';
+import ModalCheckin from './allRatings/ModalCheckin';
 import Accuracy from './allRatings/Accuracy';
 import Location from './allRatings/Location';
 import Value from './allRatings/Value';
@@ -42,6 +42,7 @@ const Ratings = (props) => {
 
   const RatingsGrid = styled.div`
   display: grid;
+  align-items: end;
   grid-template-columns: 1fr;
   margin-bottom: 2rem;
   `;
@@ -61,6 +62,10 @@ const Ratings = (props) => {
     fill: '#FF385C',
     'margin-right': '8px',
     'margin-top': '-2',
+  };
+
+  const checkinStyle = {
+    'padding-bottom': '16px',
   };
 
   return (
@@ -96,9 +101,10 @@ const Ratings = (props) => {
           data={data}
           average={metricAverage}
         />
-        <CheckIn
+        <ModalCheckin
           data={data}
           average={metricAverage}
+          styles={checkinStyle}
         />
         <Value
           data={data}

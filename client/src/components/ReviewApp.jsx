@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import faker from 'faker';
 import axios from 'axios';
 import styled from 'styled-components';
 import ReviewsList from './ReviewsList';
@@ -22,9 +21,11 @@ const ReviewApp = () => {
 
   const ReviewAppContainer = styled.div`
     font-family: 'Montserrat', sans-serif;
-    width: 1128px;
+    width: 1085px;
     padding-top: 48px;
     padding-bottom: 48px;
+    padding-left: 50px;
+    padding-right: -35px;
     margin: 0 auto;
   `;
 
