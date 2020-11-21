@@ -11,9 +11,10 @@ const ReviewApp = () => {
   const [reviewData, setReviewData] = useState([]);
   const [doneLoading, setDoneLoading] = useState(false);
   const { isShowing, toggle } = useModal();
+  const id = window.location.pathname.split('/')[1];
 
   if (!doneLoading) {
-    axios.get('api/listings/1/reviews')
+    axios.get(`/api/review-listings/${id}/reviews`)
       .then((res) => setReviewData(res.data[0].reviews))
       .catch((err) => console.log(err));
     setDoneLoading(true);
