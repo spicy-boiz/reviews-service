@@ -13,7 +13,7 @@ const ReviewApp = () => {
   const { isShowing, toggle } = useModal();
 
   if (!doneLoading) {
-    axios.get('api/listings/7')
+    axios.get('api/listings/1/reviews')
       .then((res) => setReviewData(res.data[0].reviews))
       .catch((err) => console.log(err));
     setDoneLoading(true);

@@ -14,10 +14,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 // get all listings
-app.get('/api/listings', listingController.getListings);
+app.get('/api/listings/reviews', listingController.getListings);
 
 // get a specific listing
-app.get('/api/listings/:id', listingController.getOneListing);
+app.get('/api/listings/:id/reviews', listingController.getOneListing);
 
 app.listen(port, () => (
   console.log(`listening on port ${port}`)
