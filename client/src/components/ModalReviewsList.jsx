@@ -14,15 +14,33 @@ const ReviewList = ({ data }) => {
   const ReviewContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr;
-    margin-left: 8.33333%;
+    margin-left: 7%;
     padding-right: 8px;
     min-height: 1px;
     position: relative;
   `;
 
   const SearchBarContainer = styled.div`
-    margin-bottom: 15px;
-    margin-top: 0px;
+    margin-bottom: 36px;
+    margin-top: 2px;
+  `;
+
+  const MagnifyIcon = styled.div`
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+    white-space: nowrap;
+    margin-right: 8px;
+  `;
+
+  const Svg = styled.svg`
+    display: block;
+    fill: none;
+    height: 16px;
+    width: 16px;
+    stroke: rgba(22, 22, 22, 0.924);
+    stroke-width: 2;
+    overflow: visible;
   `;
 
   const SearchBarItself = styled.div`
@@ -30,15 +48,21 @@ const ReviewList = ({ data }) => {
     cursor: text;
     display: flex;
     height: unset;
-    width: 100%;
+    width: 95%;
     margin 0px;
-    border: none;
-    color: rgb(34, 34, 34);
+    border: solid 1px;
+    color: rgba(34, 34, 34, 0.39);
     background-color: rgb(247, 247, 247);
     align-items: center;
-    padding: 12px 12px 12px 16px;
+    padding: 11px 11px 11px 16px;
     border-radius: 100px;
-    box-shadow: rgb(176, 176, 176) 0px opx opx 1px inset;
+    &:focus-within {
+    box-shadow: rgb(32, 32, 32) 0px 0px 0px 1px inset;
+      color: rgba(34, 34, 34, 0.787);
+    }
+  &:focus-within ${Svg} {
+      stroke-width: 4;
+    }
   `;
 
   const ReviewsSearchInput = styled.label`
@@ -68,6 +92,7 @@ const ReviewList = ({ data }) => {
   flex: 1 1 0%;
   padding 0px;
   text-overflow: ellipsis;
+  }
   `;
 
   const ReviewsListContainer = styled.div`
@@ -78,6 +103,13 @@ const ReviewList = ({ data }) => {
     <ReviewContainer>
       <SearchBarContainer>
         <SearchBarItself>
+          <MagnifyIcon>
+            <Svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false">
+              <g fill="none">
+                <path d="m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9" />
+              </g>
+            </Svg>
+          </MagnifyIcon>
           <ReviewsSearchInput>
             <SearchInputHouse>
               <SearchField placeholder="Search reviews" />

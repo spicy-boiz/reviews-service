@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import Cleanliness from './allRatings/Cleanliness';
-import Communication from './allRatings/Communication';
-import ModalCheckin from './allRatings/ModalCheckin';
-import Accuracy from './allRatings/Accuracy';
-import Location from './allRatings/Location';
-import Value from './allRatings/Value';
+import ModalCleanliness from './ModalComponents/ModalCleanliness';
+import ModalCommunication from './ModalComponents/ModalCommunication';
+import ModalCheckin from './ModalComponents/ModalCheckin';
+import ModalAccuracy from './ModalComponents/ModalAccuracy';
+import ModalLocation from './ModalComponents/ModalLocation';
+import ModalValue from './ModalComponents/ModalValue';
 
 const Ratings = (props) => {
   // function for total average reviews per listing
@@ -40,9 +40,14 @@ const Ratings = (props) => {
 
   const preciseRating = listingAverage().toPrecision(3);
 
+  const ContainAll = styled.div`
+    position: fixed;
+  `;
+
   const RatingsGrid = styled.div`
   display: grid;
   align-items: end;
+  padding-top: 10px;
   grid-template-columns: 1fr;
   margin-bottom: 2rem;
   `;
@@ -50,15 +55,17 @@ const Ratings = (props) => {
   const Header = styled.h2`
     display: flex;
     align-items: center;
-    font-size: 22px;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 36px;
     margin-top: 0px;
     margin-bottom: 0px;
     padding-bottom: 24px;
   `;
 
   const svgStyle = {
-    height: '17px',
-    width: '17px',
+    height: '25px',
+    width: '25px',
     fill: '#FF385C',
     'margin-right': '8px',
     'margin-top': '-2',
@@ -69,7 +76,7 @@ const Ratings = (props) => {
   };
 
   return (
-    <div>
+    <ContainAll>
       <div>
         <Header>
           <svg
@@ -85,19 +92,19 @@ const Ratings = (props) => {
         </Header>
       </div>
       <RatingsGrid>
-        <Cleanliness
+        <ModalCleanliness
           data={data}
           average={metricAverage}
         />
-        <Accuracy
+        <ModalAccuracy
           data={data}
           average={metricAverage}
         />
-        <Communication
+        <ModalCommunication
           data={data}
           average={metricAverage}
         />
-        <Location
+        <ModalLocation
           data={data}
           average={metricAverage}
         />
@@ -106,12 +113,12 @@ const Ratings = (props) => {
           average={metricAverage}
           styles={checkinStyle}
         />
-        <Value
+        <ModalValue
           data={data}
           average={metricAverage}
         />
       </RatingsGrid>
-    </div>
+    </ContainAll>
   );
 };
 

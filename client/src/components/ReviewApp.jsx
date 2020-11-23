@@ -11,9 +11,10 @@ const ReviewApp = () => {
   const [reviewData, setReviewData] = useState([]);
   const [doneLoading, setDoneLoading] = useState(false);
   const { isShowing, toggle } = useModal();
+  const id = window.location.pathname.split('/')[1];
 
   if (!doneLoading) {
-    axios.get('api/listings/7')
+    axios.get(`/api/review-listings/${id}/reviews`)
       .then((res) => setReviewData(res.data[0].reviews))
       .catch((err) => console.log(err));
     setDoneLoading(true);
@@ -21,14 +22,14 @@ const ReviewApp = () => {
 
   const ReviewAppContainer = styled.div`
     font-family: 'Montserrat', sans-serif;
-    width: 1085px;
+    width: 1128px;
     padding-top: 48px;
     padding-bottom: 48px;
     padding-left: 50px;
     padding-right: -35px;
+    overflow-x: hidden;
     margin: 0 auto;
   `;
-
   return (
     <ReviewAppContainer>
       <Ratings data={reviewData} />

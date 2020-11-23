@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const CheckIn = (props) => {
+const ModalValue = (props) => {
   const { data, average } = props;
-  const [avgCheckIn, setAvgCheckIn] = useState(0);
+  const [avgVal, setAvgVal] = useState(0);
   const [doneLoading, setDoneLoading] = useState(false);
 
   if (data.length > 0 && !doneLoading) {
     setDoneLoading(true);
-    setAvgCheckIn(average(data, 'check_in').toPrecision(2));
+    setAvgVal(average(data, 'value').toPrecision(2));
   }
 
   const BarContainer = styled.div`
-    height: 4;
-    width: 120;
+    height: 4px;
+    width: 103px;
     background-color: #e0e0de;
-    border-radius: 5;
-    margin: 5;
+    border-radius: 5px;
+    margin: 5px;
   `;
 
   const BarFiller = styled.div`
-    height: 4;
+    height: 4px;
     width:  ${({ avg }) => avg * 20}%;
     background-color: black;
     border-radius: inherit;
@@ -29,7 +29,7 @@ const CheckIn = (props) => {
   const MetricContainer = styled.div`
     display: grid;
     height: 20px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     grid-template-columns: 1fr 1fr;
 
   `;
@@ -39,10 +39,11 @@ const CheckIn = (props) => {
     flex-direction: row;
     justify-content: flex-end;
     padding-top: 3px;
-    padding-right: 95px;
+    padding-right: 40px;
   `;
 
   const MetricName = styled.div`
+  font-size:14px;
     display: flex;
     justify-content: flex-start;
 
@@ -59,18 +60,18 @@ const CheckIn = (props) => {
   return (
     <MetricContainer>
       <MetricName>
-        Check-in
+        Value
       </MetricName>
       <ScoreAndBar>
         <BarContainer>
-          <BarFiller avg={avgCheckIn} />
+          <BarFiller avg={avgVal} />
         </BarContainer>
         <MetricNum>
-          {avgCheckIn}
+          {avgVal}
         </MetricNum>
       </ScoreAndBar>
     </MetricContainer>
   );
 };
 
-export default CheckIn;
+export default ModalValue;
