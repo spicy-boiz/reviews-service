@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const Accuracy = (props) => {
+const ModalAccuracy = (props) => {
   const { data, average } = props;
   const [avgAcc, setAvgAcc] = useState(0);
   const [doneLoading, setDoneLoading] = useState(false);
@@ -13,7 +13,7 @@ const Accuracy = (props) => {
 
   const BarContainer = styled.div`
     height: 4px;
-    width: 120px;
+    width: 103px;
     background-color: #e0e0de;
     border-radius: 5px;
     margin: 5px;
@@ -29,8 +29,8 @@ const Accuracy = (props) => {
   const MetricContainer = styled.div`
     display: grid;
     height: 20px;
+    margin-bottom: 12px;
     grid-template-columns: 1fr 1fr;
-    margin-bottom: 16px;
 
   `;
 
@@ -39,10 +39,11 @@ const Accuracy = (props) => {
     flex-direction: row;
     justify-content: flex-end;
     padding-top: 3px;
-    padding-right: 95px;
+    padding-right: 40px;
   `;
 
   const MetricName = styled.div`
+  font-size:14px;
     display: flex;
     justify-content: flex-start;
 
@@ -72,4 +73,5 @@ const Accuracy = (props) => {
     </MetricContainer>
   );
 };
-export default Accuracy;
+
+export default ModalAccuracy;

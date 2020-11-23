@@ -12,15 +12,15 @@ const CheckIn = (props) => {
   }
 
   const BarContainer = styled.div`
-    height: 4;
-    width: 120;
+    height: 4px;
+    width: 120px;
     background-color: #e0e0de;
-    border-radius: 5;
-    margin: 5;
+    border-radius: 5px;
+    margin: 5px;
   `;
 
   const BarFiller = styled.div`
-    height: 4;
+    height: 4px;
     width:  ${({ avg }) => avg * 20}%;
     background-color: black;
     border-radius: inherit;

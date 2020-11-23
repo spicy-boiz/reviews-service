@@ -22,14 +22,14 @@ const ReviewApp = () => {
 
   const ReviewAppContainer = styled.div`
     font-family: 'Montserrat', sans-serif;
-    width: 1085px;
+    width: 1128px;
     padding-top: 48px;
     padding-bottom: 48px;
     padding-left: 50px;
     padding-right: -35px;
+    overflow-x: hidden;
     margin: 0 auto;
   `;
-
   return (
     <ReviewAppContainer>
       <Ratings data={reviewData} />
