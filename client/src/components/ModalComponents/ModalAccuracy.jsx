@@ -52,6 +52,7 @@ const ModalAccuracy = (props) => {
   const MetricNum = styled.div`
     font-weight: 600;
     font-size: 12px;
+    width: 18px;
     line-height: 13px;
     margin-left: 6px;
 
