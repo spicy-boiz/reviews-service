@@ -139,7 +139,6 @@ grid-template-columns: 1.2fr 2fr;
 `;
 
 const ModalRatingsContainer = styled.div`
-  position: relative;
   top:800;
 `;
 
