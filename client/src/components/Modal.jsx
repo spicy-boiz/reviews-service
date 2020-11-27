@@ -1,6 +1,6 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import ModalRatings from './ModalRatings';
 import ModalReviewsList from './ModalReviewsList';
 
@@ -14,6 +14,15 @@ const ModalOverlay = styled.div`
   top: 0;
   left: 0;
   overflow: hidden;
+`;
+
+const wrapperFade = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 `;
 
 const ModalWrapper = styled.div`
@@ -30,7 +39,32 @@ const ModalWrapper = styled.div`
   align-items: center;
   justify-content: center;
   background: rgb(34, 34, 34, 0.6) !important;
+  transition: all 0.4s ease-out;
+  animation-name: ${wrapperFade};
+  animation-duration: 400ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+  z-index: 100;
+  padding: 0px;
 `;
+
+const modalIn = keyframes`
+  from {
+    bottom: -150vh;
+  }
+  to {
+    bottom: 40px;
+  }
+`;
+
+// const modalOut = keyframes`
+//   from {
+//     bottom: 40px;
+//   }
+//   to {
+//     bottom: -150vh;
+//   }
+// `;
 
 const ModalItself = styled.div`
   display: flex;
@@ -38,12 +72,12 @@ const ModalItself = styled.div`
   width: 100%;
   max-width: 1032px;
   max-height: 90vh;
-  top: 40px;
-  bottom: 40px;
   border-radius: 12px;
   background: rgb(255, 255, 255);
   position: absolute;
   box-shadow: rgba(0, 0, 0, 0.28) 0px 8px 28px !important;
+  transition: all 0.4s ease-out;
+  animation-name: ${modalIn};
   animation-duration: 400ms;
   animation-iteration-count: 1;
   animation-fill-mode: both;
@@ -63,6 +97,7 @@ const CloseButtonContainer = styled.div`
 top: 16px;
 position: absolute;
 display: flex;
+border-radius: 50%;
 left: 26px;
 `;
 
@@ -73,14 +108,19 @@ display: inline-block;
 border-radius: 50%;
 border: none;
 outline: none;
-margin: 0px;
-padding 0px;
+width: 32px;
+height: 32px;
+margin-left: -3px;
+margin-top: -1px;
 color: rgb(34, 34, 34);
 cursor: pointer;
 position: relative;
 background: transparent;
-transition:  transform 0.25s ease 0s;
 align-items: flex-start;
+transition: 250ms ease-out;
+&:hover {
+  background-color: rgba(230, 230, 230, 0.39);
+}
 `;
 
 const MediaContainer = styled.div`
@@ -117,11 +157,24 @@ const Modal = ({ data, isShowing, hide }) => {
     }
   }, []);
 
+  const node = useRef();
+
+  const handleClickOutside = (e) => {
+    if (isShowing) {
+      if (node.current.contains(e.target)) {
+        return;
+      }
+      hide();
+    }
+  };
+
   useEffect(() => {
     document.addEventListener('keydown', escKey, false);
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
       document.removeEventListener('keydown', escKey, false);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -130,7 +183,10 @@ const Modal = ({ data, isShowing, hide }) => {
       <TotalContainer>
         <ModalOverlay />
         <ModalWrapper aria-modal="true" aria-hidden="true" tabIndex={-1} role="dialog">
-          <ModalItself>
+          <ModalItself
+            showing={isShowing}
+            ref={node}
+          >
             <CloseButtonContainer>
               <ModalCloseButton onClick={hide}>
                 <span aria-hidden="true">&times;</span>

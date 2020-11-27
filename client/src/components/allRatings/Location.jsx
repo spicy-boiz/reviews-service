@@ -8,7 +8,7 @@ const Location = (props) => {
 
   if (data.length > 0 && !doneLoading) {
     setDoneLoading(true);
-    setavgLoc(average(data, 'communication').toPrecision(2));
+    setavgLoc(average(data, 'location').toPrecision(2));
   }
 
   const BarContainer = styled.div`
@@ -50,6 +50,7 @@ const Location = (props) => {
 
   const MetricNum = styled.div`
     font-weight: 600;
+    width: 17px;
     font-size: 12px;
     line-height: 13px;
     margin-left: 6px;

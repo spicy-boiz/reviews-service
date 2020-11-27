@@ -11,13 +11,6 @@ const ReviewListEntry = (props) => {
     date,
   } = props;
 
-  // review date formatting
-  const reviewDate = new Date(date);
-  const options = { month: 'long' };
-  const dateYear = reviewDate.getFullYear();
-  const dateMonth = new Intl.DateTimeFormat('en-US', options)
-    .format(reviewDate);
-
   const ReviewListContainer = styled.div`
     padding-left: 8px;
     padding-right: 8px;
@@ -80,7 +73,7 @@ const ReviewListEntry = (props) => {
               {name}
             </div>
             <StyledDate>
-              {`${dateMonth} ${dateYear}`}
+              {`${date}`}
             </StyledDate>
           </NameAndDate>
         </ReviewTop>

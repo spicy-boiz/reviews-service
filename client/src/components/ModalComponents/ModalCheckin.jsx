@@ -51,6 +51,7 @@ const ModalCheckIn = (props) => {
 
   const MetricNum = styled.div`
     font-weight: 600;
+    width: 18px;
     font-size: 12px;
     line-height: 13px;
     margin-left: 6px;

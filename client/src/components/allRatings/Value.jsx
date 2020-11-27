@@ -8,7 +8,7 @@ const Value = (props) => {
 
   if (data.length > 0 && !doneLoading) {
     setDoneLoading(true);
-    setAvgValue(average(data, 'communication').toPrecision(2));
+    setAvgValue(average(data, 'value').toPrecision(2));
   }
 
   const BarContainer = styled.div`
@@ -50,6 +50,7 @@ const Value = (props) => {
 
   const MetricNum = styled.div`
     font-weight: 600;
+    width: 17px;
     font-size: 12px;
     line-height: 13px;
     margin-left: 6px;

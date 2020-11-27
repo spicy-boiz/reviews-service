@@ -8,7 +8,7 @@ const Communication = (props) => {
 
   if (data.length > 0 && !doneLoading) {
     setDoneLoading(true);
-    setAvgComms(average(data, 'communication').toPrecision(2));
+    setAvgComms(average(data, 'value').toPrecision(2));
   }
 
   const BarContainer = styled.div`
@@ -48,12 +48,16 @@ const Communication = (props) => {
 
   `;
 
+  // const MetricNumContainer = styled.div`
+  //   width: 17px;
+  // `;
+
   const MetricNum = styled.div`
     font-weight: 600;
+    width: 17px;
     font-size: 12px;
     line-height: 13px;
     margin-left: 6px;
-
   `;
 
   return (

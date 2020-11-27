@@ -25,15 +25,20 @@ const seedDb = (d) => {
       ((Math.random() * 5) + 2).toString().slice(0, 1)
     );
 
+    const years = [2015, 2016, 2017, 2018, 2019, 2020];
+    const randomYear = (array) => (
+      array[Math.floor(Math.random() * 6)]
+    );
+
     const newReview = () => ({
       review: {
         id: reviewIdCount,
         listing_id: currentListing.id,
         text: faker.lorem.sentences(),
-        date: faker.date.between('2015-01-01', '2020-11-13'),
+        date: `${faker.date.month()} ${randomYear(years)}`,
       },
       user: {
-        name: faker.name.findName(),
+        name: faker.name.firstName(),
         email: faker.internet.email(),
         avatar_url: '',
       },
