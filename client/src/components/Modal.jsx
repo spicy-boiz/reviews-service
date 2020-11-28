@@ -139,7 +139,7 @@ grid-template-columns: 1.2fr 2fr;
 `;
 
 const ModalRatingsContainer = styled.div`
-// this used to be position absolute, but messes up aws
+  position: inherit;
   top:800;
 `;
 
