@@ -50,6 +50,8 @@ const ReviewApp = () => {
   // eslint-disable-next-line no-unused-expressions
   isShowing ? document.body.style.overflowY = 'hidden' : document.body.style.overflowY = 'scroll';
 
+  document.body.style.overflowX = 'hidden';
+
   return (
     <div>
       <ReviewAppContainer showing={isShowing}>
