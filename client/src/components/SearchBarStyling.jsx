@@ -67,7 +67,7 @@ const SearchField = styled.input`
   font-family: inherit;
   font-size: 14px;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 18px;
   appearance: none;
   flex: 1 1 0%;
   padding 0px;
