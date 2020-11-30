@@ -1,32 +1,21 @@
 import styled from 'styled-components';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ModalReviewListEntry from './ModalReviewListEntry';
 import Searchbar from './Searchbar';
 
 const ReviewList = ({ data }) => {
   const [reviews, setReviews] = useState([]);
+  const [filteredReviews, setFilteredReviews] = useState([]);
   const [doneLoading, setDoneLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [scrollTop, setScrollTop] = useState(0);
-  // const [searchResult, setSearchResult] = useState([]);
+  // const [scrollTop, setScrollTop] = useState(0);
 
   if (data.length > 0 && !doneLoading) {
     setDoneLoading(true);
     setReviews(data);
   }
 
-  const handleInput = (e) => {
-    console.log(e.target.value);
-    setSearchTerm(e.target.value);
-  };
-
-  // useEffect(() => {
-  //   const results = reviews
-  //     .filter((singleReview) => singleReview.review.text
-  //       .toLowerCase()
-  //       .includes(searchTerm));
-  //   setSearchResult(results);
-  // }, [searchTerm]);
+  const conditionalData = filteredReviews.length > 0 ? filteredReviews : reviews;
 
   const ReviewContainer = styled.div`
     display: grid;
@@ -44,16 +33,19 @@ const ReviewList = ({ data }) => {
   return (
     <ReviewContainer>
       <Searchbar
-        searchTerm={searchTerm}
-        handleInput={handleInput}
+        data={data}
+        filteredReviews={filteredReviews}
+        setFilteredReviews={setFilteredReviews}
+        setSearchTerm={setSearchTerm}
       />
       <ReviewsListContainer>
-        {reviews.slice(0, 6).map((singleReview) => (
+        {conditionalData.map((singleReview) => (
           <ModalReviewListEntry
             avatar={singleReview.user.avatar_url}
             name={singleReview.user.name}
             text={singleReview.review.text}
             date={singleReview.review.date}
+            searchTerm={searchTerm}
           />
         ))}
       </ReviewsListContainer>
