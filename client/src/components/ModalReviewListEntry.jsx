@@ -9,6 +9,7 @@ const ReviewListEntry = (props) => {
     name,
     text,
     date,
+    searchTerm,
   } = props;
 
   const ReviewListContainer = styled.div`
@@ -61,6 +62,26 @@ const ReviewListEntry = (props) => {
     word-break: break-word;
   `;
 
+  const highlight = (reviewText) => {
+    if (searchTerm.length > 0) {
+      const newReviews = [];
+      const split = reviewText.split(/[ ]/g);
+      let tempString = '';
+      for (let i = 0; i < split.length; i += 1) {
+        const query = split[i].replace('.', '');
+        if (query.toLowerCase() !== searchTerm.toLowerCase()) {
+          tempString += split[i] + ' ';
+        } else {
+          newReviews.push(tempString);
+          newReviews.push(<mark>{split[i]}</mark>);
+          tempString = ' ';
+        }
+      }
+      newReviews.push(tempString);
+      return newReviews;
+    }
+  };
+
   return (
     <ReviewListContainer>
       <SingleReview>
@@ -78,7 +99,7 @@ const ReviewListEntry = (props) => {
           </NameAndDate>
         </ReviewTop>
         <ReviewText>
-          {text}
+          {highlight(text) || text}
         </ReviewText>
       </SingleReview>
     </ReviewListContainer>
@@ -90,6 +111,7 @@ ReviewListEntry.propTypes = {
   name: PropTypes.string,
   text: PropTypes.string,
   date: PropTypes.string,
+  searchTerm: PropTypes.string,
 };
 
 ReviewListEntry.defaultProps = {
@@ -97,6 +119,7 @@ ReviewListEntry.defaultProps = {
   name: '',
   text: '',
   date: '',
+  searchTerm: '',
 };
 
 export default ReviewListEntry;

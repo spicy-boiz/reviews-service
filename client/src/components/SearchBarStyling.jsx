@@ -45,7 +45,7 @@ const SearchBarItself = styled.div`
     }
   `;
 
-const ReviewsSearchInput = styled.label`
+const ReviewsSearchInput = styled.form`
     position: relative;
     flex: 1 1 0%;
     padding: 0px;
