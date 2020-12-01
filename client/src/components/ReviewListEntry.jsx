@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ReviewListEntry = (props) => {
+  // const [isTooLong, setIsTooLong] = useState(false);
+  // const [beenClicked, setBeenClicked] = useState(false);
   // props definitions
   const {
     avatar,
@@ -58,8 +60,16 @@ const ReviewListEntry = (props) => {
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    word-break: break-word;
   `;
+
+  // const ReadMore = styled.span`
+  //   cursor: pointer;
+  //   text-decoration: underline;
+  //   border-radius: 4px;
+  //   font-weight: 600;
+  // `;
+
+  // const textLength = text.length;
 
   return (
     <ReviewListContainer>

@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useRef } from 'react';
+import React, { useEffect, useCallback, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import styled, { keyframes, css } from 'styled-components';
 import ModalRatings from './ModalRatings';
@@ -25,6 +25,15 @@ const wrapperFade = keyframes`
   }
 `;
 
+const wrapperFadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+`;
+
 const ModalWrapper = styled.div`
   font-family: 'Montserrat', sans-serif;
   z-index: 2000;
@@ -40,8 +49,8 @@ const ModalWrapper = styled.div`
   justify-content: center;
   background: rgb(34, 34, 34, 0.6) !important;
   transition: all 0.4s ease-out;
-  animation-name: ${wrapperFade};
-  animation-duration: 400ms;
+  animation-name: ${(props) => (props.showing ? wrapperFadeOut : wrapperFade)};
+  animation-duration: ${(props) => (props.showing ? '800ms' : '400ms')};
   animation-iteration-count: 1;
   animation-fill-mode: both;
   z-index: 100;
@@ -57,14 +66,14 @@ const modalIn = keyframes`
   }
 `;
 
-// const modalOut = keyframes`
-//   from {
-//     bottom: 40px;
-//   }
-//   to {
-//     bottom: -150vh;
-//   }
-// `;
+const modalOut = keyframes`
+  from {
+    bottom: 40px;
+  }
+  to {
+    bottom: -150vh;
+  }
+`;
 
 const ModalItself = styled.div`
   display: flex;
@@ -77,9 +86,11 @@ const ModalItself = styled.div`
   position: absolute;
   box-shadow: rgba(0, 0, 0, 0.28) 0px 8px 28px !important;
   transition: all 0.4s ease-out;
-  animation-name: ${modalIn};
-  animation-duration: 400ms;
+  animation-name: ${(props) => (props.showing ? modalOut : modalIn)};
+  /* animation-direction: alternate; */
+  animation-duration: ${(props) => (props.showing ? '1000ms' : '400ms')};
   animation-iteration-count: 1;
+  animation-play-state:
   animation-fill-mode: both;
   z-index: 100;
   padding: 0px;
@@ -149,10 +160,15 @@ const ModalReviewsContainer = styled.div`
 `;
 
 const Modal = ({ data, isShowing, hide }) => {
+  const [localShow, setLocalShow] = useState(false);
+  const reset = () => {
+    setLocalShow(!localShow);
+    setTimeout(hide, 500);
+  };
   const escKey = useCallback((e) => {
     if (isShowing) {
       if (e.keyCode === 27) {
-        hide();
+        reset();
       }
     }
   }, []);
@@ -164,7 +180,7 @@ const Modal = ({ data, isShowing, hide }) => {
       if (node.current.contains(e.target)) {
         return;
       }
-      hide();
+      reset();
     }
   };
 
@@ -182,13 +198,13 @@ const Modal = ({ data, isShowing, hide }) => {
     <>
       <TotalContainer>
         <ModalOverlay />
-        <ModalWrapper aria-modal="true" aria-hidden="true" tabIndex={-1} role="dialog">
+        <ModalWrapper aria-modal="true" aria-hidden="true" tabIndex={-1} role="dialog" showing={localShow}>
           <ModalItself
-            showing={isShowing}
+            showing={localShow}
             ref={node}
           >
             <CloseButtonContainer>
-              <ModalCloseButton onClick={hide}>
+              <ModalCloseButton onClick={reset}>
                 <span aria-hidden="true">&times;</span>
               </ModalCloseButton>
             </CloseButtonContainer>
