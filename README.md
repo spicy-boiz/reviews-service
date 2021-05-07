@@ -37,6 +37,15 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 - Node 6.13.10+
 - MongoDB 4.4.2+
 
+## Technologies
+- Javascript
+- React
+- Express
+- CSS
+- Styled Components
+- AWS EC2
+- MongoDB
+
 ## Development
 
 ### Installing Dependencies
