@@ -1,6 +1,6 @@
-# spicy boiz - rareBnB
+# AilPup - Reviews Module
 
-> Project description
+> A reviews module for a property rental company. This is a full stack module that is part of a larger project which emulates the look, feel, and capabilities of the top property rental company in the world.
 
 ## Related Projects
 
@@ -17,14 +17,19 @@
 
 ## Usage
 
-> Some usage instructions
+> This module can be used locally to simulate the reviews module of the the top rental property listing company in the world. There are 100 mock listings to observe review data for. The local routes are formatted as `localhost:3003/LISTING_NUMBER` where `LISTING_NUMBER` is any number from 1 to 100.
+> Once a listing's reviews are shown, functionality for this module include:
+> * an aggregate total rating for the property based on 6 seperate criteria.
+> * a rating for each criteria calculated as the average rating between all reviewers.
+> * the 6 most recent reviews of the rental property showcasing the user's (reviewers) names, avatars, and date the review was made.
+> * a button to show all reviews left for a property which opens a modal that has a search bar functionality that allows anyone to type in a keyword and have that keyword highlighted in all reviews that contain it.
 
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
-- Node 6.13.0
-- etc
+- Node 6.13.10+
+- MongoDB 4.4.2+
 
 ## Development
 
@@ -33,6 +38,20 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 From within the root directory:
 
 ```sh
-npm install -g webpack
 npm install
+```
+### Generating Database and Mock Data
+
+From within the root directory:
+
+```sh
+npm run seed
+```
+### Serving Locally
+
+From within the root directory:
+
+```sh
+npm run react-dev
+npm run start
 ```
