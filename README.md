@@ -2,6 +2,11 @@
 
 > A reviews module for a property rental company. This is a full stack module that is part of a larger project which emulates the look, feel, and capabilities of the top property rental company in the world.
 
+## Screenshots
+<img src="https://fecscreenshots.s3-us-west-1.amazonaws.com/Screenshot+from+2021-05-07+15-31-19.png" height="300">
+<img src="https://fecscreenshots.s3-us-west-1.amazonaws.com/Screenshot+from+2021-05-07+15-34-07.png" height="300">
+<img src="https://fecscreenshots.s3-us-west-1.amazonaws.com/Screenshot+from+2021-05-07+15-35-07.png" height="300">
+
 ## Related Projects
 
   - https://github.com/spicy-boiz/photo-carousel-service
@@ -14,6 +19,7 @@
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
+1. [Run](#run)
 
 ## Usage
 
@@ -47,7 +53,7 @@ From within the root directory:
 ```sh
 npm run seed
 ```
-### Serving Locally
+### Run
 
 From within the root directory:
 
