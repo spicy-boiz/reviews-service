@@ -1,4 +1,4 @@
-# spicy boiz - rareBnB
+# AilPup - Reviews Module
 
 > Project description
 
