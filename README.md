@@ -18,6 +18,7 @@
 
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
+1. [Technologies](#technologies)
 1. [Development](#development)
 1. [Run](#run)
 
