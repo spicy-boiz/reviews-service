@@ -1,6 +1,6 @@
 # AilPup - Reviews Module
 
-> A reviews module for a property rental company. This is a full stack module that is part of a larger project which emulates the look, feel, and capabilities of the top property rental company in the world.
+> A reviews module for a vacation rental company. This is a full stack module that is part of a larger project which emulates the look, feel, and capabilities of the top property rental company in the world.
 
 ## Screenshots
 <img src="https://fecscreenshots.s3-us-west-1.amazonaws.com/Screenshot+from+2021-05-07+15-31-19.png" height="300">
@@ -12,7 +12,6 @@
   - https://github.com/spicy-boiz/photo-carousel-service
   - https://github.com/spicy-boiz/reservations-service
   - https://github.com/spicy-boiz/places-to-stay-service
-  - https://github.com/spicy-boiz/reviews-service
 
 ## Table of Contents
 
@@ -24,7 +23,7 @@
 
 ## Usage
 
-> This module can be used locally to simulate the reviews module of the the top rental property listing company in the world. There are 100 mock listings to observe review data for. The local routes are formatted as `localhost:3003/LISTING_NUMBER` where `LISTING_NUMBER` is any number from 1 to 100.
+> This module can be used locally to simulate the reviews microservice of the the top vacation rental company in the world. There are 100 mock listings to observe review data for. The local routes are formatted as `localhost:3003/LISTING_NUMBER` where `LISTING_NUMBER` is any number from 1 to 100.
 > Once a listing's reviews are shown, functionality for this module include:
 > * an aggregate total rating for the property based on 6 seperate criteria.
 > * a rating for each criteria calculated as the average rating between all reviewers.
